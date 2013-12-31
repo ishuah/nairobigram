@@ -3,9 +3,20 @@ var logfmt = require("logfmt");
 var app = express();
 
 app.use(logfmt.requestLogger());
-var t = 1;
+
+//home
 app.get('/', function(req, res) {
-  res.send('Received '+t);
+  res.send('Received');
+});
+
+//subscriptions post
+app.post('/callback', function(req, res){
+	res.send('Post');
+});
+
+//subscriptions get
+app.post('/callback', function(req, res){
+	res.send('Get');
 });
 
 var port = process.env.PORT || 5000;
