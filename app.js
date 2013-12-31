@@ -3,9 +3,9 @@ var logfmt = require("logfmt");
 var app = express();
 
 app.use(logfmt.requestLogger());
-
+var t = 1;
 app.get('/', function(req, res) {
-  res.send('Ubiquitous');
+  res.send('Received '+t);
 });
 
 var port = process.env.PORT || 5000;
