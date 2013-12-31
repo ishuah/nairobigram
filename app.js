@@ -15,7 +15,7 @@ app.post('/callback', function(req, res){
 });
 
 //subscriptions get
-app.post('/callback', function(req, res){
+app.get('/callback', function(req, res){
 	res.send('Get');
 });
 
