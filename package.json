@@ -23,6 +23,7 @@
   "homepage": "https://github.com/ishuah91/ubiquitous",
   "dependencies": {
     "logfmt": "~0.18.1",
-    "express": "~3.4.7"
+    "express": "~3.4.7",
+    "url": "~0.7.9"
   }
 }
