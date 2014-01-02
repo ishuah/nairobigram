@@ -24,6 +24,8 @@
   "dependencies": {
     "logfmt": "~0.18.1",
     "express": "~3.4.7",
-    "url": "~0.7.9"
+    "url": "~0.7.9",
+    "socket.io": "~0.9.16",
+    "jade": "~1.0.2"
   }
 }

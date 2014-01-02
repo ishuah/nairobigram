@@ -1,0 +1,17 @@
+doctype html
+html
+  head
+    title= title  
+
+  body
+    block content
+    script(src='/js/jquery-1.10.2.min.js')
+    script(src="/socket.io/socket.io.js")
+    script(type='text/javascript').
+      var socket = io.connect();
+      socket.on('message', function(data){
+        $('p.message').append(data.message);
+        });
+      socket.on('image', function(data){
+        $('section#feed').prepend('<img src="'+data.thumbnail+'">');
+        })
