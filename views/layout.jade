@@ -9,9 +9,6 @@ html
     script(src="/socket.io/socket.io.js")
     script(type='text/javascript').
       var socket = io.connect();
-      socket.on('message', function(data){
-        $('p.message').append(data.message);
+      socket.on('images', function(data){
+        $('section#feed').prepend(data);
         });
-      socket.on('image', function(data){
-        $('section#feed').prepend('<img src="'+data.thumbnail+'">');
-        })

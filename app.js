@@ -6,8 +6,8 @@ var app = express();
 var routes = require('./routes');
 var path = require('path');
 var http = require('http');
-//total objects updated
-var objects;
+var helpers = require('./helpers.js');
+
 
 app.configure(function(){
   app.set('port', process.env.PORT || 8080);
@@ -33,18 +33,15 @@ var server = http.createServer(app).listen(app.get('port'), function(){
 var sio = io.listen(server);
 
 sio.sockets.on('connection', function (socket) {
-	socket.emit('message', { message: 'Connected' });
+	socket.emit('images', { images: 'Connected' });
 });
 
 //home
-app.get('/', function(req, res){
-	res.send(objects);
-});
+app.get('/', routes.index);
 
 //subscriptions post
 app.post('/callback', function(req, res){
-	var obj = req.body;
-	objects = obj;
+	helpers.handleUpdates(req.body);
 	res.send(200);
 });
 
