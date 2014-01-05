@@ -1,5 +1,20 @@
 extends layout
 
 block content
-     p.message Simple Instagram feed
-     section#feed
+     nav.top-bar(data-options="is_hover:false")
+      section.top-bar-section
+        ul.title-area
+          li.name
+            h1
+              a(href="/dashboard").
+                Nairobi on Instagram
+
+        ul.left
+          li
+            a.
+             A realtime instagram photo stream for Nairobi, Kenya.
+     a(href="https://github.com/ishuah91/ubiquitous" target="_blank")
+      img(style="position: absolute; top: 0; right: 0; border: 0; width: 149px; height: 149px; z-index:1;" src="/img/github-fork.png" alt="Fork me on GitHub")
+     div(style="text-align:center")
+      .spinner
+      section#feed.small-8.large-12.columns

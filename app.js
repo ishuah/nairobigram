@@ -6,8 +6,8 @@ var app = express();
 var routes = require('./routes');
 var path = require('path');
 var http = require('http');
+var https = require('https');
 var helpers = require('./helpers.js');
-
 
 app.configure(function(){
   app.set('port', process.env.PORT || 8080);
@@ -33,7 +33,9 @@ var server = http.createServer(app).listen(app.get('port'), function(){
 var sio = io.listen(server);
 
 sio.sockets.on('connection', function (socket) {
-	socket.emit('images', { images: 'Connected' });
+	//var data = helpers.loadImages();
+	helpers.loadImages(socket);
+	
 });
 
 //home
@@ -41,7 +43,7 @@ app.get('/', routes.index);
 
 //subscriptions post
 app.post('/callback', function(req, res){
-	helpers.handleUpdates(req.body);
+	helpers.handleUpdates(sio.sockets,req.body);
 	res.send(200);
 });
 
@@ -51,3 +53,4 @@ app.get('/callback', function(req, res){
 	var urlObjects = parsedUrl.query;
 	res.send(urlObjects["hub.challenge"]);
 });
+

@@ -1,3 +1,3 @@
 exports.index = function(req, res){
-  res.render('index', { title: 'Ubiquitous demo: nairobigram' });
+  res.render('index', { title: 'Nairobi on Instagram' });
 };
