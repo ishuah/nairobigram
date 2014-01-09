@@ -20,6 +20,7 @@ html
       
       socket.on('error', function(){
         $('.spinner').remove();
+        socket.removeAllListeners('images');
         $('section#feed').append("<h1>Sorry! There seems to be a problem with nairobigram. We're fixing it.</h1>");
         });
 
