@@ -11,10 +11,17 @@ html
     script(src="/socket.io/socket.io.js")
     script(type='text/javascript').
       var socket = io.connect();
-      socket.on('images', function(data){
+      socket.on('connect', function(){
+          socket.on('images', function(data){
+            $('.spinner').remove();
+            $('section#feed').append(data.images);
+          });
+        });
+      
+      socket.on('error', function(){
         $('.spinner').remove();
-        $('section#feed').append(data.images);
-      });
+        $('section#feed').append("<h1>Sorry! There seems to be a problem with nairobigram. We're fixing it.</h1>");
+        });
 
       socket.on('updates', function(data){
         $(data.images).hide().prependTo('section#feed').fadeIn("slow");
