@@ -11,7 +11,7 @@ html
     script(src="/socket.io/socket.io.js")
     script(type='text/javascript').
       var socket = io.connect();
-      
+
       socket.on('images', function(data){
         $('.spinner').remove();
         $('section#feed').append(data.images);
@@ -25,5 +25,5 @@ html
         $('.spinner').remove();
         socket.removeAllListeners('images');
         socket.removeAllListeners('updates');
-        $('section#feed').append("<h1>Sorry! There seems to be a problem with nairobigram. We're fixing it.</h1>");
+        $('section#feed').append("<h1>There's a slight problem. Try loading the page from <a href='https://nairobigram.herokuapp.com'>here.</a></h1>");
       });
