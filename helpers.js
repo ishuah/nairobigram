@@ -62,7 +62,9 @@ fetchData = function(socket, object_type, isupdate){
 	  });
 
 	  response.on('end', function () {
-	  	images = '';
+	  	//images = '';
+	  	images = Array();
+
 	  	console.log(payload);
 	  	payload = JSON.parse(payload);
 
@@ -76,13 +78,13 @@ fetchData = function(socket, object_type, isupdate){
 			}
 	  	}
 	  	
-	  	
-	  	console.log("options_geos.path:"+options_geos.path);
-	  	console.log("options_tags.path:"+options_tags.path);
-		console.log("myoption.path:"+myoption.path);
 
 	  	for(var i = 0; i<payload.data.length; i++){
-	  		images += '<a href="'+payload.data[i].link+'" target="_blank"><img src="'+payload.data[i].images.low_resolution.url+'" > </a>';
+	  		image = Object();
+	  		image.link = payload.data[i].link;
+	  		image.src = payload.data[i].images.low_resolution.url;
+	  		images.push(image);
+	  		//images += '<a href="'+payload.data[i].link+'" target="_blank"><img src="'+payload.data[i].images.low_resolution.url+'" > </a>';
 	  	}
 	  	if(isupdate){
 	  		if(images!='')

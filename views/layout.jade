@@ -5,25 +5,15 @@ html
     link(rel='stylesheet', href='/css/foundation.min.css')
     link(rel='stylesheet', href='/css/normalize.css')
     link(rel='stylesheet', href='/css/spinkit.css')
+    script.
+        window.UB = {};
   body
     block content
     script(src='/js/jquery-1.10.2.min.js')
-    script(src="/socket.io/socket.io.js")
-    script(type='text/javascript').
-      var socket = io.connect();
-
-      socket.on('images', function(data){
-        $('.spinner').remove();
-        $('section#feed').append(data.images);
-      });
-
-      socket.on('updates', function(data){
-        $(data.images).hide().prependTo('section#feed').fadeIn("slow");
-      });
-
-      socket.on('error', function(){
-        $('.spinner').remove();
-        socket.removeAllListeners('images');
-        socket.removeAllListeners('updates');
-        $('section#feed').append("<h1>There's a slight problem. Try loading the page from <a href='https://nairobigram.herokuapp.com'>here.</a></h1>");
-      });
+    script(src='/socket.io/socket.io.js')
+    script(src='/js/underscore-min.js')
+    script(src='/js/backbone-min.js')
+    script(src='/js/templates/ImageViewTemplate.js')
+    script(src='/js/views/ImageView.js')
+    script(src='/js/models/Image.js')
+    script(src='/js/ubiquitous.js')
