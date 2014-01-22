@@ -41,6 +41,9 @@ sio.sockets.on('connection', function (socket) {
 //home
 app.get('/', routes.index);
 
+//about us
+app.get('/about/us', routes.about_us);
+
 //subscriptions post
 app.post('/callback', function(req, res){
 	helpers.handleUpdates(sio.sockets,req.body);

@@ -8,6 +8,20 @@ html
     script.
         window.UB = {};
   body
+    nav.top-bar(data-options="is_hover:false")
+      section.top-bar-section
+        ul.title-area
+          li.name
+            h1
+              a(href="/").
+                Nairobi on Instagram
+
+        ul.left
+          li#aboutUs
+            a(href='/about/us' target="_blank").
+              What is this project?
+     a(href="https://github.com/ishuah91/nairobigram" target="_blank")
+      img(style="position: absolute; top: 0; right: 0; border: 0; width: 149px; height: 149px; z-index:1;" src="/img/github-fork.png" alt="Fork me on GitHub")
     block content
     script(src='/js/jquery-1.10.2.min.js')
     script(src='/socket.io/socket.io.js')
@@ -17,3 +31,6 @@ html
     script(src='/js/views/ImageView.js')
     script(src='/js/models/Image.js')
     script(src='/js/ubiquitous.js')
+    script(type="text/javascript").
+        if(window.location.pathname == '/about/us')
+            $('ul.left li#aboutUs').addClass('active');
