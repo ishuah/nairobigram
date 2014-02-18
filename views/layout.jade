@@ -5,6 +5,7 @@ html
     link(rel='stylesheet', href='/css/foundation.min.css')
     link(rel='stylesheet', href='/css/normalize.css')
     link(rel='stylesheet', href='/css/spinkit.css')
+    link(rel='stylesheet', href='/css/custom.css')
     script.
         window.UB = {};
   body
@@ -20,6 +21,12 @@ html
           li#aboutUs
             a(href='/about/us').
               What is this project?
+          li.tweet
+            a
+              a(href="https://twitter.com/share" class="twitter-share-button" data-url="https://nairobigram.ishuah.com" data-via="nairobigram" data-lang="en").
+                Tweet
+              script(type="text/javascript").
+                !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
      a(href="https://github.com/ishuah91/nairobigram" target="_blank")
       img(style="position: absolute; top: 0; right: 0; border: 0; width: 149px; height: 149px; z-index:1;" src="/img/github-fork.png" alt="Fork me on GitHub")
     block content
