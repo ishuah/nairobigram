@@ -32,14 +32,10 @@ exports.loadImages = function(socket){
 }
 
 fetchData = function(socket, object_type, isupdate){
-	if(isupdate)
-			console.log("sidaaa");
-
 	if(object_type == 'geography'){
 		var myoption = extend({}, options_geos);
 		if(isupdate){
 			myoption.path += '&min_id='+geos_min_id;
-			console.log('geography update:'+myoption.path);
 		}
 
 	}
@@ -48,7 +44,6 @@ fetchData = function(socket, object_type, isupdate){
 		var myoption = extend({}, options_tags);
 		if(isupdate){
 			myoption.path += '&min_id='+tags_min_tag_id;
-			console.log('tag update:'+myoption.path);
 		}
 
 	}
@@ -62,10 +57,8 @@ fetchData = function(socket, object_type, isupdate){
 	  });
 
 	  response.on('end', function () {
-	  	//images = '';
 	  	images = Array();
 
-	  	console.log(payload);
 	  	payload = JSON.parse(payload);
 
 	  	if(payload.pagination.next_min_id){
@@ -84,7 +77,6 @@ fetchData = function(socket, object_type, isupdate){
 	  		image.link = payload.data[i].link;
 	  		image.src = payload.data[i].images.low_resolution.url;
 	  		images.push(image);
-	  		//images += '<a href="'+payload.data[i].link+'" target="_blank"><img src="'+payload.data[i].images.low_resolution.url+'" > </a>';
 	  	}
 	  	if(isupdate){
 	  		if(images!='')
